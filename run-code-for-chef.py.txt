@@ -1,0 +1,20 @@
+export REGION='us-central1' 
+export PROJECT='qwiklabs-gcp-00-2928989f3afb'  
+export AR_REPO='chef-repo'
+export SERVICE_NAME='chef-streamlit-app'
+
+gcloud artifacts repositories create $AR_REPO \
+  --repository-format=docker \
+  --location=$REGION
+
+gcloud builds submit --tag "$REGION-docker.pkg.dev/$PROJECT/$AR_REPO/$SERVICE_NAME"
+
+gcloud run deploy $SERVICE_NAME \
+  --image "$REGION-docker.pkg.dev/$PROJECT/$AR_REPO/$SERVICE_NAME" \
+  --port 8080 \
+  --allow-unauthenticated \
+  --region $REGION \
+  --platform managed \
+  --project $PROJECT \
+  --set-env-vars PROJECT=$PROJECT,REGION=$REGION
+
