@@ -1,8 +1,27 @@
-export REGION='us-central1' 
-export PROJECT='qwiklabs-gcp-00-2928989f3afb'  
+1)On Google cloud terminal just copy and paste the below code:
+command -> git clone https://github.com/GoogleCloudPlatform/generative-ai.git
+command -> cd generative-ai/gemini/sample-apps/gemini-streamlit-cloudrun
+
+2)download the file by using wget
+command -> wget https://raw.githubusercontent.com/localhost-gokul/NM/main/chef.py
+
+3)Replace the project_on and region chef.py
+command -> nano chef.py 
+find the GCP_PROJECT and GCP_REGION replace with your project_id and region 
+
+4)Save the file by using ctrl+s and exit by using ctrl+x
+
+5)Download the Docker file and remove the old Docker file
+command -> rm Dockerfile
+command -> wget https://raw.githubusercontent.com/localhost-gokul/NM/main/Dockerfile
+
+6)Just copy and paste the below code and replace with PROJECT = your_project_id and REGION = your_region
+export PROJECT='qwiklabs-gcp-00-2928989f3afb'
+export REGION='us-central1'                    
 export AR_REPO='chef-repo'
 export SERVICE_NAME='chef-streamlit-app'
 
+7)Just copy and paste 
 python3 -m venv gemini-streamlit
 source gemini-streamlit/bin/activate
 pip install -r requirements.txt
